@@ -41,10 +41,6 @@ func main() {
 		fmt.Fprintf(os.Stderr, "-smtp-port is not defined\n")
 		os.Exit(1)
 	}
-	if *password == "" {
-		fmt.Fprintf(os.Stderr, "-password is not defined\n")
-		os.Exit(1)
-	}
 	if *subject == "" {
 		fmt.Fprintf(os.Stderr, "-subject is not defined\n")
 		os.Exit(1)

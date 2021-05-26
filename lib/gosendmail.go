@@ -16,7 +16,10 @@ func GoSendMail(smtpHost string, smtpPort string, from string, password string, 
 		"\r\n" +
 		message + "\r\n")
 
-	auth := smtp.PlainAuth(from, from, password, smtpHost)
+	var auth smtp.Auth
+	if password != "" {
+		auth = smtp.PlainAuth(from, from, password, smtpHost)
+	}
 
 	err := smtp.SendMail(smtpHost+":"+smtpPort, auth, from, []string{to}, emailMessage)
 	if err != nil {
